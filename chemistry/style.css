@@ -51,7 +51,7 @@ h1{
     gap: 20px;
     padding-left: 10%;
     width: 100%;
-    
+    animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
 }
 .side{
     display: flex;
@@ -98,6 +98,7 @@ h1{
     font-size: 18px;
     color: #001e4d;
     font-weight: 600;
+    animation: fadeIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
 }
 
 #answer-buttons{
@@ -174,6 +175,46 @@ h1{
 
 }
 
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #0a1a12 0%, #184d32 100%);
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 2px 16px #000a;
+    animation: fadeInDown 1s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.navbar a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 1.5rem;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.navbar a.active, .navbar a:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 2px 12px #1db95455;
+}
+
+.quiz-option.correct {
+    background: #1db954;
+    color: #fff;
+    animation: correctPulse 0.7s;
+}
+.quiz-option.wrong {
+    background: #b91d1d;
+    color: #fff;
+    animation: wrongShake 0.5s;
+}
+
 @media (max-width: 900px) {
     body {
         flex-direction: column;
@@ -210,4 +251,18 @@ h1{
     0% { transform: scale(0.7); opacity: 0; }
     80% { transform: scale(1.1); opacity: 1; }
     100% { transform: scale(1); }
+}
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes correctPulse {
+    0% { box-shadow: 0 0 0 0 #1db95477; }
+    70% { box-shadow: 0 0 0 10px #1db95433; }
+    100% { box-shadow: 0 0 0 0 #1db95400; }
+}
+@keyframes wrongShake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
 }

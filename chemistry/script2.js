@@ -207,7 +207,7 @@ function showQuestion(selectedOption){
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
         button.innerHTML = answer.text;
-        button.classList.add("btn");
+        button.classList.add("btn", "quiz-option");
         answerButton.appendChild(button);
 
         // Function to hide 2 wrong answers and show 1 correct and 1 wrong answer
@@ -223,7 +223,7 @@ function showQuestion(selectedOption){
 }
 
 function hideAnswers() {
-    const buttons = document.querySelectorAll('.btn');
+    const buttons = document.querySelectorAll('.btn, .quiz-option');
     let correctAnswerShown = false;
     let wrongAnswerCount = 0;
 
@@ -257,7 +257,14 @@ function selectAnswer(e) {
             button.classList.add("correct");
         }
         button.disabled = true;
-    })
+    });
+    // Animate question
+    const questionElem = document.getElementById('question');
+    if (questionElem) {
+        questionElem.classList.remove('animate-question');
+        void questionElem.offsetWidth;
+        questionElem.classList.add('animate-question');
+    }
 }
 
 document.getElementById('hideAnswersButton').addEventListener('click', hideAnswers);
@@ -269,5 +276,18 @@ function resetState() {
     let twos = document.getElementById("hideAnswersButton");
     twos.style.display = "flex"
 }
+
+// Add animation class for question
+const style = document.createElement('style');
+style.innerHTML = `
+.animate-question {
+    animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    60% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 1; transform: scale(1); }
+}`;
+document.head.appendChild(style);
 
 startQuiz()
