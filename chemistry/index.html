@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="../src/style.css">
+    <link rel="stylesheet" href="../src/style1.css">
+</head>
+
+<body class="quiz-body">
+    <nav class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/chemistry/index.html" class="active">Chemistry</a>
+        <a href="/physics/index.html">Physics</a>
+        <a href="/maths/index.html">Maths</a>
+        <a href="/general/index.html">General</a>
+    </nav>
+    <div class="quiz-container">
+        <div class="side">
+            <img class="logo" src="../src/logo1.jpg">
+            <form id="selectionForm">
+                <label>
+                    <span>Select an option:</span>
+                    <select id="optionsDropdown">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                    </select>
+                </label>
+                <button type="button" onclick="updateSelection()">Submit</button>
+            </form>
+        </div>
+        <div class="questions">
+            <div class="app">
+                <h1 id="head"><img class="logo1" src="../src/logo2.jpg">BSG 100Level Quiz Competition<br><br>Chemistry</h1>
+                <div class="quiz">
+                    <h2 id="question">Question goes here</h2>
+                    <div id="answer-buttons">
+                        <button class="quiz-option">Answer 1</button>
+                        <button class="quiz-option">Answer 2</button>
+                        <button class="quiz-option">Answer 3</button>
+                        <button class="quiz-option">Answer 4</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="hideAnswersButton" onclick="hide()">50:50</button>
+    </div>
+
+    <script src="script2.js"></script>
+</body>
+</html>
