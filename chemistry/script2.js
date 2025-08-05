@@ -247,24 +247,21 @@ function hide(){
 function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
+    
+    // Apply styles simultaneously to avoid delay appearance
     if (isCorrect) {
         selectedBtn.classList.add("correct");
     } else {
-        selectedBtn.classList.add("incorrect")
+        selectedBtn.classList.add("incorrect");
     }
+    
+    // Show all correct answers and disable all buttons simultaneously
     Array.from(answerButton.children).forEach(button => {
         if (button.dataset.correct === "true") {
             button.classList.add("correct");
         }
         button.disabled = true;
     });
-    // Animate question
-    const questionElem = document.getElementById('question');
-    if (questionElem) {
-        questionElem.classList.remove('animate-question');
-        void questionElem.offsetWidth;
-        questionElem.classList.add('animate-question');
-    }
 }
 
 document.getElementById('hideAnswersButton').addEventListener('click', hideAnswers);
