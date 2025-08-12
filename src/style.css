@@ -1,3 +1,8 @@
+/* Highlight incorrect answer in red */
+.incorrect {
+    background-color: #f44336 !important;
+    color: #fff !important;
+}
 /* src/style.css - Shared styles for all pages */
 
 :root {
